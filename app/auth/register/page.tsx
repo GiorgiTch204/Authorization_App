@@ -80,7 +80,7 @@ export default function RegisterPage(){
                 />
 
                 <input 
-                    type="text"
+                    type="password"
                     placeholder="Confirm Password"
                     className=""
                     onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
