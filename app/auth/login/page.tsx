@@ -47,16 +47,16 @@ export default function LoginPage(){
         }};
 
     return(
-        <div className="">
-            <Link href="/">Home Page</Link>
-            <form onSubmit={handleLogin}>
-                <h1>Login</h1>
+        <div className={styles.loginFormContainer}>
+            <Link href="/" className={styles.homePageBtn}>Home Page</Link>
+            <form onSubmit={handleLogin} className={styles.loginForm}>
+                <h1 className={styles.loginFormHeader}>Login</h1>
                 {error && <p>{error}</p>}
 
                 <input 
                     type="text"
                     placeholder="Username"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
@@ -64,15 +64,15 @@ export default function LoginPage(){
                 <input 
                     type="password" 
                     placeholder="Password"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
 
-                <button type="submit">Login</button>
+                <button type="submit" className={styles.logBtn}>Login</button>
 
-                Don&apos;t have an account?{" "}
-                <Link href="/auth/register">Register</Link>
+                <span className={styles.addInfo}>Don&apos;t have an account?{" "}</span>
+                <Link href="/auth/register" className={styles.regPage}>Register</Link>
             </form>
         </div>
     )

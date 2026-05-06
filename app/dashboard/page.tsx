@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "./dashboard.module.css";
 
 export default function DashboardPage(){
     const [loaded, setLoaded] = useState(false);
@@ -24,29 +25,23 @@ export default function DashboardPage(){
     };
 
     if(!loaded){
-        return <div>Loading. Please wait</div>
+        return <div className={styles.loading}>Loading. Please wait</div>
     };
 
     return(
 
-        <div>
-            <div>
-                <div>
-                    <h1>Dashboard</h1>
+        <div className={styles.dashboardContainer}>
+            <div className={styles.dashboardCard}>
+                <div className={styles.dashboardHeader}>
+                    <h1 className={styles.title}>Dashboard</h1>
 
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
                 </div>
 
-                <div>
-                    <p>Welcome!</p>
+                <div className={styles.welcomeSection}>
+                    <p className={styles.welcomeText}>Welcome!</p>
                 </div>
-
-                <div>
-                    <div>
-                        <h3>Account Status</h3>
-                        <p>Active</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     )
