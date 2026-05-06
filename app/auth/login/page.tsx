@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/dist/client/link";
+import styles from "./login.module.css";
 
 export default function LoginPage(){
     const [username, setUsername] = useState("");
