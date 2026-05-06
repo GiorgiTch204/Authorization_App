@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import styles from "./register.module.css";
 
 export default function RegisterPage(){
     const [formData, setFormData] = useState({
@@ -68,17 +69,17 @@ export default function RegisterPage(){
     };
 
     return(
-        <div>
-            <Link href="/">Home Page</Link>
-            <form onSubmit={handleRegister}>
-                <h1>Register</h1>
+        <div className={styles.regFormContainer}>
+            <Link href="/" className={styles.homePageBtn}>Home Page</Link>
+            <form onSubmit={handleRegister} className={styles.regForm}>
+                <h1 className={styles.regFormHeader}>Register</h1>
 
                 {error && <p>{error}</p>}
 
                 <input 
                     type="text"
                     placeholder="Username"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setFormData({...formData, username: e.target.value})}
                     required
                 />
@@ -86,7 +87,7 @@ export default function RegisterPage(){
                 <input 
                     type="email" 
                     placeholder="Email"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required    
                 />
@@ -94,7 +95,7 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Password"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setFormData({...formData, password: e.target.value})}
                     required
                 />
@@ -102,15 +103,15 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Confirm Password"
-                    className=""
+                    className={styles.input}
                     onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
                     required
                 />
 
-                <button type="submit">Register</button>
+                <button type="submit" className={styles.regBtn}>Register</button>
 
-                Already have an account?{" "}
-                <Link href="/auth/login">Login here</Link>
+                <span className={styles.addInfo}>Already have an account?{" "}</span>
+                <Link href="/auth/login" className={styles.logPage}>Login here</Link>
             </form>
         </div>
     )
