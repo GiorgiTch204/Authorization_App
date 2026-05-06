@@ -13,31 +13,37 @@ export default function LoginPage(){
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+
         setError("");
 
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const foundUsers = users.find(
+            (e: any) => e.username === username && e.password === password
+        );
+
+        if(foundUsers){
+            localStorage.setItem("token", "fakeJWTToken12345");
+            router.push("/dashboard");
+            return;
+        }
+
         try{
-            const response = await fetch("https://dummyjson.com/user/login", {
+            const response = await fetch("https://dummyjson.com/auth/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    username,
-                    password,
-                    expiresInMins: 60
-                })
-            })
-
-            const data = await response.json();
+                body: JSON.stringify({username, password})
+            });
 
             if(response.ok){
+                const data=await response.json();
                 localStorage.setItem("token", data.accessToken);
                 router.push("/dashboard");
             }else{
-                setError(data.message || "Login Failed.");
+                setError("Error");
             }
-        }catch(err){
-            setError("Error. Please try again.");
-        }
-    };
+        } catch {
+            setError("Login failed.");
+        }};
 
     return(
         <div className="">

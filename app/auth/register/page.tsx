@@ -31,7 +31,22 @@ export default function RegisterPage(){
             return;
         }
 
-        const response = await fetch("https://dummyjson.com/users/add", {
+        const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const newUser={
+            username: formData.username,
+            password: formData.password,
+            email: formData.email
+        };
+
+        userLogin.push(newUser);
+
+        localStorage.setItem("users", JSON.stringify(userLogin));
+
+        setError("");
+
+        try{
+            const response = await fetch("https://dummyjson.com/users/add", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -43,6 +58,11 @@ export default function RegisterPage(){
 
         if(response.ok){
             alert("Account created successfully! Please login.");
+            router.push("/auth/login");
+        }
+        } catch (error) {
+            console.error("Registration failed:", error);
+
             router.push("/auth/login");
         }
     };
