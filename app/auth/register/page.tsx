@@ -33,7 +33,7 @@ export default function RegisterPage(){
 
         const response = await fetch("https://dummyjson.com/users/add", {
             method: "POST",
-            headers: {"Content-Type": "aoolication/json"},
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 username: formData.username,
                 email: formData.email,
