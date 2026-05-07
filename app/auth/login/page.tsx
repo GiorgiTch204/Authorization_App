@@ -18,6 +18,7 @@ export default function LoginPage(){
         setError("");
 
         const users = JSON.parse(localStorage.getItem("users") || "[]");
+        
         const foundUsers = users.find(
             (e: any) => e.username === username && e.password === password
         );
@@ -32,7 +33,11 @@ export default function LoginPage(){
             const response = await fetch("https://dummyjson.com/auth/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({username, password})
+                body: JSON.stringify({
+                    username: "emilys",
+                    password: "emilyspass",
+                    expiresInMins: 30
+                }),
             });
 
             if(response.ok){
@@ -49,7 +54,7 @@ export default function LoginPage(){
     return(
         <div className={styles.loginFormContainer}>
             <Link href="/" className={styles.homePageBtn}>Home Page</Link>
-            <form onSubmit={handleLogin} className={styles.loginForm}>
+            <form className={styles.loginForm}>
                 <h1 className={styles.loginFormHeader}>Login</h1>
                 {error && <p>{error}</p>}
 
@@ -69,7 +74,7 @@ export default function LoginPage(){
                     required
                 />
 
-                <button type="submit" className={styles.logBtn}>Login</button>
+                <button type="submit" onClick={handleLogin} className={styles.logBtn}>Login</button>
 
                 <span className={styles.addInfo}>Don&apos;t have an account?{" "}</span>
                 <Link href="/auth/register" className={styles.regPage}>Register</Link>

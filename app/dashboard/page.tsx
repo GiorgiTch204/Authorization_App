@@ -16,7 +16,7 @@ export default function DashboardPage(){
             router.push("/auth/login");
         }else{
             setLoaded(true);
-        }
+        } 
     }, [router]);
 
     const handleLogout = () =>{
