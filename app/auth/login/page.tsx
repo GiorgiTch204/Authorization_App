@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 import styles from "./login.module.css";
 
 export default function LoginPage(){
@@ -34,8 +34,8 @@ export default function LoginPage(){
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    username: "emilys",
-                    password: "emilyspass",
+                    username,
+                    password,
                     expiresInMins: 30
                 }),
             });
@@ -54,7 +54,7 @@ export default function LoginPage(){
     return(
         <div className={styles.loginFormContainer}>
             <Link href="/" className={styles.homePageBtn}>Home Page</Link>
-            <form className={styles.loginForm}>
+            <form className={styles.loginForm} onSubmit={handleLogin}>
                 <h1 className={styles.loginFormHeader}>Login</h1>
                 {error && <p>{error}</p>}
 
@@ -74,7 +74,7 @@ export default function LoginPage(){
                     required
                 />
 
-                <button type="submit" onClick={handleLogin} className={styles.logBtn}>Login</button>
+                <button type="submit" className={styles.logBtn}>Login</button>
 
                 <span className={styles.addInfo}>Don&apos;t have an account?{" "}</span>
                 <Link href="/auth/register" className={styles.regPage}>Register</Link>

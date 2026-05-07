@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./dashboard.module.css";
+import RegisterPage from "../auth/register/page";
 
 export default function DashboardPage(){
-    const [loaded, setLoaded] = useState(false);
-
     const router = useRouter();
 
     useEffect(() => {
@@ -14,18 +13,12 @@ export default function DashboardPage(){
 
         if(!token){
             router.push("/auth/login");
-        }else{
-            setLoaded(true);
-        } 
+        }
     }, [router]);
 
     const handleLogout = () =>{
         localStorage.removeItem("token");
         router.push("/");
-    };
-
-    if(!loaded){
-        return <div className={styles.loading}>Loading. Please wait</div>
     };
 
     return(

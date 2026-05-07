@@ -125,7 +125,7 @@ export default function RegisterPage(){
     return(
         <div className={styles.regFormContainer}>
             <Link href="/" className={styles.homePageBtn}>Home Page</Link>
-            <form className={styles.regForm}>
+            <form className={styles.regForm} onSubmit={handleRegister}>
                 <h1 className={styles.regFormHeader}>Register</h1>
 
                 {error && <p>{error}</p>}
@@ -166,7 +166,7 @@ export default function RegisterPage(){
                     required
                 />
 
-                <button onClick={handleRegister} type="submit" className={styles.regBtn}>Register</button>
+                <button type="submit" className={styles.regBtn}>Register</button>
 
                 <span className={styles.addInfo}>Already have an account?{" "}</span>
                 <Link href="/auth/login" className={styles.logPage}>Login here</Link>
