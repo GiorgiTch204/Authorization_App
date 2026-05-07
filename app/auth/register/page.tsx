@@ -6,12 +6,18 @@ import Link from "next/link";
 import styles from "./register.module.css";
 
 export default function RegisterPage(){
-    const [formData, setFormData] = useState({
-        username: "",
-        email: "", 
-        password: "",
-        confirmPassword: ""
-    });
+    // const [formData, setFormData] = useState({
+    //     username: "",
+    //     email: "", 
+    //     password: "",
+    //     confirmPassword: ""
+    // });
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
 
     const [error, setError] = useState("");
     
@@ -22,22 +28,63 @@ export default function RegisterPage(){
 
         setError("");
 
-        if(formData.password !== formData.confirmPassword){
+        // if(formData.password !== formData.confirmPassword){
+        //     setError("Passwords do not match!");
+        //     return;
+        // }
+
+        if(password !== confirmPassword){
             setError("Passwords do not match!");
             return;
         }
 
-        if(formData.password.length<6){
+        
+        // if(formData.password.length<6){
+        //     setError("Password must be at least 6 characters long!");
+        //     return;
+        // }
+
+        if(password.length<6){
             setError("Password must be at least 6 characters long!");
             return;
         }
 
         const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
 
+        const existingUserEmail = userLogin.find(
+            (user: any) => user.email === email,
+        );
+
+        const existingUsername = userLogin.find(
+            (user: any) => user.username === username
+        );
+        
+        if(existingUserEmail && existingUsername){
+            alert("Both username and email are already taken");
+            return;
+        }
+
+        if(existingUserEmail){
+            alert("Email already taken!");
+            return;
+        }
+
+        if(existingUsername){
+            alert("Username already taken!");
+            return;
+        }
+
+        
+        // const newUser={
+        //     username: formData.username,
+        //     password: formData.password,
+        //     email: formData.email
+        // };
+
         const newUser={
-            username: formData.username,
-            password: formData.password,
-            email: formData.email
+            username: username,
+            password: password,
+            email: email
         };
 
         userLogin.push(newUser);
@@ -46,15 +93,22 @@ export default function RegisterPage(){
 
         setError("");
 
+
         try{
             const response = await fetch("https://dummyjson.com/users/add", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
+            // body: JSON.stringify({
+            //     username: formData.username,
+            //     email: formData.email,
+            //     password: formData.password,
+            // }),
+
             body: JSON.stringify({
-                username: formData.username,
-                email: formData.email,
-                password: formData.password,
-            }),
+                username: username,
+                email: email,
+                password: password
+            })
         });
 
         if(response.ok){
@@ -80,7 +134,8 @@ export default function RegisterPage(){
                     type="text"
                     placeholder="Username"
                     className={styles.input}
-                    onChange={(e) => setFormData({...formData, username: e.target.value})}
+                    // onChange={(e) => setFormData({...formData, username: e.target.value})}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                 />
 
@@ -88,7 +143,8 @@ export default function RegisterPage(){
                     type="email" 
                     placeholder="Email"
                     className={styles.input}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    // onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setEmail(e.target.value)}
                     required    
                 />
 
@@ -96,7 +152,8 @@ export default function RegisterPage(){
                     type="password"
                     placeholder="Password"
                     className={styles.input}
-                    onChange={(e) => setFormData({...formData, password: e.target.value})}
+                    // onChange={(e) => setFormData({...formData, password: e.target.value})}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
 
@@ -104,7 +161,8 @@ export default function RegisterPage(){
                     type="password"
                     placeholder="Confirm Password"
                     className={styles.input}
-                    onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                    // onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
 
