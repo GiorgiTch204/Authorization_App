@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "./register.module.css";
+// import styles from "./register.module.css";
 
 export default function RegisterPage(){
     // const [formData, setFormData] = useState({
@@ -123,18 +123,20 @@ export default function RegisterPage(){
     };
 
     return(
-        <div className={styles.regFormContainer}>
-            <Link href="/" className={styles.homePageBtn}>Home Page</Link>
-            <form className={styles.regForm} onSubmit={handleRegister}>
-                <h1 className={styles.regFormHeader}>Register</h1>
+        <div className="flex flex-col items-center justify-center gap-[15px] min-h-screen">
+            <Link href="/" className="px-6 py-3 border-2 border-black/90 rounded-lg no-underline font-bold transition-transform duration-200 ease-in-out hover:scale-105">
+                Home Page
+            </Link>
+            
+            <form className="flex flex-col items-center justify-center gap-5 border-2 border-black/85 rounded bg-aliceblue/70 p-[15px_50px] shadow-[0_5px_15px_rgba(0,0,0,0.2)]" onSubmit={handleRegister}>
+                <h1 className="text-[rgba(0,100,0,0.86)]">Register</h1>
 
-                {error && <p>{error}</p>}
+                {error && <p className="text-red-500">{error}</p>}
 
                 <input 
                     type="text"
                     placeholder="Username"
-                    className={styles.input}
-                    // onChange={(e) => setFormData({...formData, username: e.target.value})}
+                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
@@ -142,8 +144,7 @@ export default function RegisterPage(){
                 <input 
                     type="email" 
                     placeholder="Email"
-                    className={styles.input}
-                    // onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setEmail(e.target.value)}
                     required    
                 />
@@ -151,8 +152,7 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Password"
-                    className={styles.input}
-                    // onChange={(e) => setFormData({...formData, password: e.target.value})}
+                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
@@ -160,16 +160,19 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Confirm Password"
-                    className={styles.input}
-                    // onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
 
-                <button type="submit" className={styles.regBtn}>Register</button>
+                <button type="submit" className="font-bold text-white/95 bg-black/95 w-[116px] h-[35px] rounded-md transition-transform duration-200 ease-in-out cursor-pointer hover:scale-105">
+                    Register
+                </button>
 
-                <span className={styles.addInfo}>Already have an account?{" "}</span>
-                <Link href="/auth/login" className={styles.logPage}>Login here</Link>
+                <span className="text-black/85 font-bold text-[17px]">Already have an account?{" "}</span>
+                    <Link href="/auth/login" className="font-bold no-underline text-blue-600/90 transition-transform duration-200 ease-in-out hover:scale-105 hover:text-blue-600 active:text-blue-400">
+                        Login here
+                    </Link>
             </form>
         </div>
     )
