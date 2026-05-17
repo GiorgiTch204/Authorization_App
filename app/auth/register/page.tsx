@@ -123,7 +123,7 @@ export default function RegisterPage(){
     };
 
     return(
-        <div className="flex flex-col items-center justify-center gap-[15px] min-h-screen">
+        <div className="flex flex-col items-center justify-center gap-3.75 min-h-screen">
             <Link href="/" className="px-6 py-3 border-2 border-black/90 rounded-lg no-underline font-bold transition-transform duration-200 ease-in-out hover:scale-105">
                 Home Page
             </Link>
@@ -136,7 +136,7 @@ export default function RegisterPage(){
                 <input 
                     type="text"
                     placeholder="Username"
-                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
+                    className="w-53.75 h-7 px-1.25 py-0.5 border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
@@ -144,7 +144,7 @@ export default function RegisterPage(){
                 <input 
                     type="email" 
                     placeholder="Email"
-                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
+                    className="w-53.75 h-7 px-1.25 py-0.5 border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setEmail(e.target.value)}
                     required    
                 />
@@ -152,7 +152,7 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Password"
-                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
+                    className="w-53.75 h-7 px-1.25 py-0.5 border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
@@ -160,12 +160,12 @@ export default function RegisterPage(){
                 <input 
                     type="password"
                     placeholder="Confirm Password"
-                    className="w-[215px] h-[28px] px-[5px] py-[2px] border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
+                    className="w-53.75 h-7 px-1.25 py-0.5 border-2 border-gray-500/90 rounded-lg placeholder:font-bold"
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
 
-                <button type="submit" className="font-bold text-white/95 bg-black/95 w-[116px] h-[35px] rounded-md transition-transform duration-200 ease-in-out cursor-pointer hover:scale-105">
+                <button type="submit" className="font-bold text-white/95 bg-black/95 w-29 h-8.75 rounded-md transition-transform duration-200 ease-in-out cursor-pointer hover:scale-105">
                     Register
                 </button>
 

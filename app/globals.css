@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* This is where you define custom colors in v4 */
+  /* Custom colors */
   --color-aliceblue: #f0f8ff;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;   /* soft light background */
+  --foreground: #1e293b;   /* dark readable text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f8fafc;
+    --foreground: #1e293b;
   }
 }
 

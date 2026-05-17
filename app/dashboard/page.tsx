@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./dashboard.module.css";
-import RegisterPage from "../auth/register/page";
 
 export default function DashboardPage(){
     const router = useRouter();
