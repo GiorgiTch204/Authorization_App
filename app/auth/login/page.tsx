@@ -39,7 +39,7 @@ export default function LoginPage(){
             });
 
             if(response.ok){
-                const data=await response.json();
+                const data = await response.json();
                 localStorage.setItem("token", data.accessToken);
                 router.push("/dashboard");
             }else{
