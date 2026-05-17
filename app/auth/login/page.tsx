@@ -22,7 +22,7 @@ export default function LoginPage(){
         const foundUsers = users.find(user => user.username === username && user.password === password);
 
         if(foundUsers){
-            localStorage.setItem("token", "fakeJWTToken12345");
+            localStorage.setItem("token", "fake-token");
             router.push("/dashboard");
             return;
         }

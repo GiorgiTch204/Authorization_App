@@ -18,7 +18,6 @@ export default function RegisterPage(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-
     const [error, setError] = useState("");
     
     const router = useRouter();
@@ -113,7 +112,7 @@ export default function RegisterPage(){
         } catch (error) {
             console.error("Registration failed:", error);
 
-            router.push("/auth/login");
+            router.push("/auth/register");
         }
     };
 
