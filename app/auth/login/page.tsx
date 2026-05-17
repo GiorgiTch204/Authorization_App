@@ -51,7 +51,7 @@ export default function LoginPage(){
 
     return(
         <div className="flex justify-center items-center flex-col gap-3.75 min-h-screen">
-            <Link href="/" className="font-bold no-underline text-blue-600/90 transition-all duration-200 ease-in-out hover:scale-105 hover:text-blue-600 active:text-blue-400">Home Page=</Link>
+            <Link href="/" className="font-bold no-underline text-blue-600/90 transition-all duration-200 ease-in-out hover:scale-105 hover:text-blue-600 active:text-blue-400">Home Page</Link>
             
             <form className="flex justify-center items-center flex-col gap-5 border-2 border-black rounded bg-aliceblue/70 p-[15px_50px] shadow-[0_4px_15px_rgba(0,0,0,0.1)]" onSubmit={handleLogin}>
                 <h1 className="text-[rgba(0,0,139,0.863)] m-0 text-2xl font-bold">Login</h1>
