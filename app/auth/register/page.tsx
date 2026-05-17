@@ -51,13 +51,9 @@ export default function RegisterPage(){
 
         const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
 
-        const existingUserEmail = userLogin.find(
-            (user: any) => user.email === email,
-        );
+        const existingUserEmail = userLogin.find(user => user.email === email);
 
-        const existingUsername = userLogin.find(
-            (user: any) => user.username === username
-        );
+        const existingUsername = userLogin.find(user => user.username === username);
         
         if(existingUserEmail && existingUsername){
             alert("Both username and email are already taken");
@@ -92,7 +88,6 @@ export default function RegisterPage(){
         localStorage.setItem("users", JSON.stringify(userLogin));
 
         setError("");
-
 
         try{
             const response = await fetch("https://dummyjson.com/users/add", {
