@@ -38,10 +38,8 @@ export default function LoginPage(){
 
     const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const foundLocalUser = users.find(
-      (user) =>
-        (user.username === username || user.email === username) &&
-        user.password === password
+    const foundLocalUser = users.find((user) =>
+        (user.username === username || user.email === username) && user.password === password
     );
 
     if (foundLocalUser){
@@ -53,7 +51,6 @@ export default function LoginPage(){
       };
 
       localStorage.setItem("authSession", JSON.stringify(session));
-      localStorage.setItem("token", session.token);
 
       router.push("/dashboard");
       return;

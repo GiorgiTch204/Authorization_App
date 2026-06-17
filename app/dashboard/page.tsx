@@ -48,7 +48,6 @@ export default function DashboardPage() {
 
         if (!response.ok){
           localStorage.removeItem("authSession");
-          localStorage.removeItem("token");
           router.push("/auth/login");
           return;
         }

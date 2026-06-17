@@ -57,8 +57,6 @@ export default function RegisterPage(){
             return;
         }
 
-        const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
-
         const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
 
         const existingUserEmail = userLogin.find(u => u.email === email);
@@ -107,8 +105,8 @@ export default function RegisterPage(){
                 return;
             }
 
-            users.push(newUser);
-            localStorage.setItem("users", JSON.stringify(users));
+            userLogin.push(newUser);
+            localStorage.setItem("users", JSON.stringify(userLogin));
 
             alert("Account Created! Now login.")
             router.push("/auth/login");
