@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 // import styles from "./register.module.css";
 
-<<<<<<< HEAD
 type User = {
         username:string,
         email:string,
@@ -13,8 +12,6 @@ type User = {
     };
 
 
-=======
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
 export default function RegisterPage(){
     // const [formData, setFormData] = useState({
     //     username: "",
@@ -32,10 +29,6 @@ export default function RegisterPage(){
     
     const router = useRouter();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -46,11 +39,8 @@ export default function RegisterPage(){
         //     return;
         // }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
         if(password !== confirmPassword){
             setError("Passwords do not match!");
             return;
@@ -67,7 +57,6 @@ export default function RegisterPage(){
             return;
         }
 
-<<<<<<< HEAD
         const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
 
         const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
@@ -75,13 +64,6 @@ export default function RegisterPage(){
         const existingUserEmail = userLogin.find(u => u.email === email);
 
         const existingUsername = userLogin.find(u => u.username === username);
-=======
-        const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
-
-        const existingUserEmail = userLogin.find(user => user.email === email);
-
-        const existingUsername = userLogin.find(user => user.username === username);
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
         
         if(existingUserEmail && existingUsername){
             alert("Both username and email are already taken");
@@ -105,17 +87,12 @@ export default function RegisterPage(){
         //     email: formData.email
         // };
 
-<<<<<<< HEAD
         const newUser:User={
-=======
-        const newUser={
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
             username: username,
             password: password,
             email: email
         };
 
-<<<<<<< HEAD
         try{
             const response = await fetch("https://dummyjson.com/users/add",{
                 method:"POST",
@@ -140,41 +117,6 @@ export default function RegisterPage(){
             setError("Try again");
         }}
 
-=======
-        userLogin.push(newUser);
-
-        localStorage.setItem("users", JSON.stringify(userLogin));
-
-        setError("");
-
-        try{
-            const response = await fetch("https://dummyjson.com/users/add", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            // body: JSON.stringify({
-            //     username: formData.username,
-            //     email: formData.email,
-            //     password: formData.password,
-            // }),
-
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password
-            })
-        });
-
-        if(response.ok){
-            alert("Account created successfully! Please login.");
-            router.push("/auth/login");
-        }
-        } catch (error) {
-            console.error("Registration failed:", error);
-
-            router.push("/auth/register");
-        }
-    };
->>>>>>> f4860de039155cc3eb1febcfc6e25308faf89561
 
     return(
         <div className="flex flex-col items-center justify-center gap-3.75 min-h-screen">
