@@ -33,24 +33,12 @@ export default function RegisterPage(){
         e.preventDefault();
 
         setError("");
-
-        // if(formData.password !== formData.confirmPassword){
-        //     setError("Passwords do not match!");
-        //     return;
-        // }
-
-
-
+        
         if(password !== confirmPassword){
             setError("Passwords do not match!");
             return;
         }
 
-        
-        // if(formData.password.length<6){
-        //     setError("Password must be at least 6 characters long!");
-        //     return;
-        // }
 
         if(password.length<6){
             setError("Password must be at least 6 characters long!");
@@ -77,13 +65,6 @@ export default function RegisterPage(){
             alert("Username already taken!");
             return;
         }
-
-        
-        // const newUser={
-        //     username: formData.username,
-        //     password: formData.password,
-        //     email: formData.email
-        // };
 
         const newUser:User={
             username: username,

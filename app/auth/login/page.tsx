@@ -17,13 +17,6 @@ type AuthSession ={
   provider: "localStorage" | "dummyJSON";
 };
 
-type DummyLoginResponse ={
-  accessToken?: string;
-  token?: string;
-  username?: string;
-  email?: string;
-};
-
 export default function LoginPage(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +32,7 @@ export default function LoginPage(){
     const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
 
     const foundLocalUser = users.find((user) =>
-        (user.username === username || user.email === username) && user.password === password
+      (user.username === username || user.email === username) && user.password === password
     );
 
     if (foundLocalUser){
@@ -74,7 +67,7 @@ export default function LoginPage(){
         return;
       }
 
-      const data: DummyLoginResponse = await response.json();
+      const data = await response.json();
 
       const session: AuthSession ={
         token: data.accessToken || data.token || "",
