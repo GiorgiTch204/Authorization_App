@@ -1,0 +1,84 @@
+ .regFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 100vh;
+ }
+
+ .regForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.856);
+    border-radius: 4px;
+    background-color: rgba(240, 248, 255, 0.726);
+    padding: 15px 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.homePageBtn{
+    padding: 12px 24px;
+    border: 2px solid rgba(0, 0, 0, 0.918);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease;  
+}
+.homePageBtn:hover{
+  transform: scale(1.05);
+}
+
+.regFormHeader{
+    color: rgba(0, 100, 0, 0.863);
+}
+
+.input{
+    width: 215px;
+    height: 28px;
+    padding: 2px 5px;
+    border: 2px solid rgba(128, 128, 128, 0.89);
+    border-radius: 8px;
+}
+
+.input::placeholder{
+    font-weight: bold;
+}
+
+.regBtn{
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.952);
+    background-color: rgba(0, 0, 0, 0.966);
+    width: 116px;
+    height: 35px;
+    border-radius: 6px;
+    transition: transform 0.2s ease;  
+    cursor: pointer;
+}
+
+.regBtn:hover{
+    transform: scale(1.05);
+}
+
+.addInfo{
+    color: rgba(0, 0, 0, 0.877);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.logPage{
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(0, 0, 255, 0.897);
+    transition: transform 0.2s ease;
+}   
+.logPage:hover{
+    transform: scale(1.05);
+    color: rgb(0, 0, 255);
+}
+.logPage:active{
+    color: rgb(89, 89, 255);
+}

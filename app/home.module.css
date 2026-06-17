@@ -1,0 +1,31 @@
+.btnContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  min-height: 100vh;
+  background-color: #ffffffea;
+}
+
+.logBtn, .regBtn{
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s ease;  
+}
+
+.logBtn{
+  background-color: #0071f38a;
+  color: white;
+}
+
+.regBtn{
+  background-color: #ffffff;
+  color: #0070f3;
+  border: 2px solid #0070f3;
+}
+
+.logBtn:hover, .regBtn:hover{
+  transform: scale(1.05);
+}
