@@ -3,33 +3,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-// import styles from "./register.module.css";
-
-type User = {
-        username:string,
-        email:string,
-        password:string
-    };
-
 
 export default function RegisterPage(){
-    // const [formData, setFormData] = useState({
-    //     username: "",
-    //     email: "", 
-    //     password: "",
-    //     confirmPassword: ""
-    // });
-
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
     const [error, setError] = useState("");
     
     const router = useRouter();
 
-    const handleRegister = async (e: React.FormEvent) => {
+    const handleRegister = async (e: React.FormEvent) =>{
         e.preventDefault();
 
         setError("");
@@ -45,56 +29,25 @@ export default function RegisterPage(){
             return;
         }
 
-        const userLogin = JSON.parse(localStorage.getItem("users") || "[]");
-
-        const existingUserEmail = userLogin.find(u => u.email === email);
-
-        const existingUsername = userLogin.find(u => u.username === username);
-        
-        if(existingUserEmail && existingUsername){
-            alert("Both username and email are already taken");
-            return;
-        }
-
-        if(existingUserEmail){
-            alert("Email already taken!");
-            return;
-        }
-
-        if(existingUsername){
-            alert("Username already taken!");
-            return;
-        }
-
-        const newUser:User={
-            username: username,
-            password: password,
-            email: email
-        };
-
-        try{
-            const response = await fetch("https://dummyjson.com/users/add",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json",
-                },
-                body:JSON.stringify(newUser)
+         try{
+            const response = await fetch("/api/auth/register",{
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
             });
 
-            if(!response.ok){
-                setError("Failed");
+            if (!response.ok){
+                const message = await response.text();
+                setError(message || "Registration failed");
                 return;
             }
 
-            userLogin.push(newUser);
-            localStorage.setItem("users", JSON.stringify(userLogin));
-
-            alert("Account Created! Now login.")
             router.push("/auth/login");
-        }catch (error){
-            console.error("Failed!",error);
+            }catch (err){
+            console.error("Registration failed:", err);
             setError("Try again");
-        }}
+            }
+        };
 
 
     return(
