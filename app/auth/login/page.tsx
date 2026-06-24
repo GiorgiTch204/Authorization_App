@@ -10,13 +10,6 @@ type User ={
   password: string;
 };
 
-type AuthSession ={
-  token: string;
-  username: string;
-  email?: string;
-  provider: "localStorage" | "dummyJSON";
-};
-
 export default function LoginPage(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,37 +22,12 @@ export default function LoginPage(){
 
     setError("");
 
-    const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const foundLocalUser = users.find((user) =>
-      (user.username === username || user.email === username) && user.password === password
-    );
-
-    if (foundLocalUser){
-      const session: AuthSession ={
-        token: "local-storage-token",
-        username: foundLocalUser.username,
-        email: foundLocalUser.email,
-        provider: "localStorage",
-      };
-
-      localStorage.setItem("authSession", JSON.stringify(session));
-
-      router.push("/dashboard");
-      return;
-    }
-
     try{
-      const response = await fetch("https://dummyjson.com/auth/login",{
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          expiresInMins: 30,
-        }),
+          "Content-Type": "application/json"},
+        body: JSON.stringify({username, password}),
       });
 
       if (!response.ok){
@@ -67,19 +35,9 @@ export default function LoginPage(){
         return;
       }
 
-      const data = await response.json();
-
-      const session: AuthSession ={
-        token: data.accessToken || data.token || "",
-        username: data.username || username,
-        email: data.email,
-        provider: "dummyJSON",
-      };
-
-      localStorage.setItem("authSession", JSON.stringify(session));
-      localStorage.setItem("token", session.token);
-
       router.push("/dashboard");
+      router.refresh();
+      
     }catch (error){
       console.error("Login failed:",error);
       setError("Please try again.");
