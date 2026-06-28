@@ -45,7 +45,7 @@ export default function LoginPage(){
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-[15px]">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-3.75">
       <Link
         href="/"
         className="font-bold text-blue-600 no-underline transition-all duration-200 hover:scale-105">Home Page
@@ -53,7 +53,7 @@ export default function LoginPage(){
 
       <form
         onSubmit={handleLogin}
-        className="flex flex-col items-center justify-center gap-5 rounded border-2 border-black bg-[#f0f8ff]/70 px-[50px] py-[15px] shadow-[0_4px_15px_rgba(0,0,0,0.1)]"
+        className="flex flex-col items-center justify-center gap-5 rounded border-2 border-black bg-aliceblue/70 px-[50px] py-[15px] shadow-[0_4px_15px_rgba(0,0,0,0.1)]"
       >
         <h1 className="m-0 text-2xl font-bold text-blue-900">
             Login
